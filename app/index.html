@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="CloudApp" ng-csp>
+  <head>
+    <meta charset="utf-8">
+    <title>Cloud App Monitor</title><!--
+    <build:css>styles/app.css </build:css>-->
+    <link rel="stylesheet" href="components/bootstrap.css/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/main.css"><!--
+    <endbuild> </endbuild>-->
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div ng-controller="Applications" class="span9">
+          <h3>Applications</h3>
+          <table class="table table-striped">
+            <tr ng-repeat="app in cloudApps">
+              <td><a href="{{app.url}}" target="_blank">{{app.name}}</a></td>
+              <td><span>{{app.hour}}:{{app.minute}}:{{app.second}}</span></td>
+            </tr>
+          </table>
+        </div>
+        <div ng-controller="Options" class="span3">
+          <h3>Options</h3>
+          <button ng-click="clear()" class="btn">Clear up applications</button><br><br>
+          <button ng-click="save()" class="btn">Save applications time</button><br><br>
+          <button ng-click="pause()" class="btn">Pause timer</button>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="components/angular/angular.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/services/chromeMessaging.js"></script>
+  <script src="scripts/controllers/applications.js"></script>
+  <script src="scripts/controllers/options.js"></script>
+</html>

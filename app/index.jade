@@ -1,0 +1,37 @@
+!!! 5
+html(ng-app="CloudApp", ng-csp)
+  head
+    meta(charset='utf-8')
+    title Cloud App Monitor
+    //
+       build:css styles/app.css 
+    link(rel='stylesheet', href='components/bootstrap.css/css/bootstrap.min.css')
+    link(rel='stylesheet', href='styles/main.css')
+    //
+       endbuild 
+  body
+    .container
+      .row
+        .span9(ng-controller="Applications")
+          h3 Applications
+          table.table.table-striped
+            tr(ng-repeat="app in cloudApps")
+              td
+                a(href="{{app.url}}", target='_blank') {{app.name}}
+              td
+                span {{app.hour}}:{{app.minute}}:{{app.second}}
+        .span3(ng-controller="Options")
+          h3 Options
+          button.btn(ng-click="clear()") Clear up applications
+          br
+          br
+          button.btn(ng-click="save()") Save applications time
+          br
+          br
+          button.btn(ng-click="pause()") Pause timer
+  script(src="components/angular/angular.js")
+  script(src="scripts/app.js")
+  script(src="scripts/services/chromeMessaging.js")
+  script(src="scripts/controllers/applications.js")
+  script(src="scripts/controllers/options.js")
+    
